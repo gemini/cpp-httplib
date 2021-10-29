@@ -1480,7 +1480,7 @@ inline T Response::get_header_value(const char *key, size_t id) const {
 template <typename... Args>
 inline ssize_t Stream::write_format(const char *fmt, const Args &...args) {
   const auto bufsiz = 2048;
-  std::array<char, bufsiz> buf;
+  std::array<char, bufsiz> buf{};
 
 #if defined(_MSC_VER) && _MSC_VER < 1900
   auto sn = _snprintf_s(buf.data(), bufsiz - 1, buf.size() - 1, fmt, args...);
